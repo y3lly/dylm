@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do you love me?</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f5f5f5;
+  }
+  #container {
+    text-align: center;
+    position: relative;
+  }
+  .steady {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.2s;
+  }
+  .moving {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: default;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .moving:hover {
+    background-color: #c82333;
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+</style>
+</head>
+<body>
+  <div id="container">
+    <h2>Do you love me?</h2>
+    <button id="no" class="steady" onclick="alert('SAKIT MO NAMAN LODS!!!')">No</button>
+    <button id="yes" class="moving" onmousemove="moveButton(event)" onclick="return false;">Yes</button>
+  </div>
+  <script>
+    function moveButton(event) {
+      var button = document.getElementById('yes');
+      var container = document.getElementById('container');
+      var containerRect = container.getBoundingClientRect();
+      var mouseX = event.clientX - containerRect.left;
+      var mouseY = event.clientY - containerRect.top;
+      var buttonWidth = button.offsetWidth;
+      var buttonHeight = button.offsetHeight;
+      var newX = mouseX - buttonWidth / 2;
+      var newY = mouseY - buttonHeight / 2;
+      button.style.left = newX + 'px';
+      button.style.top = newY + 'px';
+    }
+  </script>
+</body>
+</html>
+
+
